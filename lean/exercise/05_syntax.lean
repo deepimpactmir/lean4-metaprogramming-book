@@ -1,5 +1,7 @@
 import Lean
 import Lean.Parser.Syntax
+import Std.Classes.SetNotation
+import Std.Util.ExtendedBinder
 
 open Lean Elab Command Term
 
@@ -67,7 +69,6 @@ def elabHelp : CommandElab := fun stx => Lean.logInfo "success!"
 
 /- ### 5. -/
 
--- Note: std4 has to be in dependencies of your project for this to work.
 syntax (name := bigsumin) "∑ " Std.ExtendedBinder.extBinder "in " term "," term : term
 
 @[term_elab bigsumin]

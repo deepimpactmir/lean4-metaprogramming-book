@@ -5,6 +5,8 @@ package «lean4-metaprogramming-book» {
   srcDir := ⟨"lean"⟩
 }
 
+require std from git "https://github.com/leanprover/std4" @ "main"
+
 @[default_target]
 lean_lib «lean4-metaprogramming-book» {
   roots := #[`cover, `extra, `main, `solutions]
