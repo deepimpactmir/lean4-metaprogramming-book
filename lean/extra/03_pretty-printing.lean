@@ -92,10 +92,22 @@ slightly more advanced machinery though:
 @[delab app.foo]
 def delabfooFinal : Delab := do
   let e ← getExpr
-  guard $ e.isAppOfArity' `foo 1 -- only delab full applications this way
+  guard <| e.isAppOfArity' `foo 1
   let fn := mkIdent `fooSpecial
   let arg ← withAppArg delab
   `($fn $arg)
+
+/-
+@[delab app.foo]
+def delabfooFinal : Delab := do
+  let e ← getExpr
+  match e.isAppOfArity' `foo 1 with
+  | false => `(foo)
+  | true => do
+  let fn := mkIdent `fooSpecial
+  let arg ← withAppArg delab
+  `($fn $arg)
+-/
 
 #check foo 42 -- fooSpecial 42 : Nat
 #check foo -- 2 : Nat → Nat, still 2 since 3 failed
