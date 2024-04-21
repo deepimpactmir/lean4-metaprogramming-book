@@ -4,3 +4,6 @@ language = "en"
 multilingual = false
 src = "md"
 title = "Metaprogramming in Lean 4"
+
+[output.html]
+git-repository-url = "https://github.com/leanprover-community/lean4-metaprogramming-book"
